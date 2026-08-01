@@ -1,0 +1,173 @@
+/* 
+   GOOGLE FONTS
+*/
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+
+
+:root{
+
+  --primary:#7A1230;
+  --primary-light:#A52A4E;
+
+  --accent:#C7A54A;
+
+  --bg:#FCFBF8;
+
+  --surface:#FFFFFF;
+
+  --text:#1F2937;
+
+  --text-light:#667085;
+
+  --border:#ECECEC;
+
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+
+  --radius:20px;
+
+  --transition:.35s ease;
+}
+
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  font-family:'Inter',sans-serif;
+
+  background:var(--bg);
+
+  color:var(--text);
+
+  overflow-x:hidden;
+
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+
+
+.container{
+
+  width:min(1280px,92%);
+
+  margin:auto;
+
+}
+
+
+
+section{
+
+  padding:100px 0;
+
+}
+
+
+.section-title{
+
+  font-family:'Fraunces',serif;
+
+  font-size:3rem;
+
+  color:var(--primary);
+
+  margin-bottom:20px;
+
+}
+
+.section-subtitle{
+
+  color:var(--text-light);
+
+  max-width:700px;
+
+  line-height:1.8;
+
+}
+
+
+.btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:14px 34px;
+
+  border-radius:999px;
+
+  font-weight:600;
+
+  transition:var(--transition);
+
+}
+
+.btn-primary{
+
+  background:var(--primary);
+
+  color:white;
+
+}
+
+.btn-primary:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:var(--shadow);
+
+}
+
+.btn-outline{
+
+  border:2px solid var(--primary);
+
+  color:var(--primary);
+
+}
+
+.btn-outline:hover{
+
+  background:var(--primary);
+
+  color:white;
+
+}
+
+
+
+.card{
+
+  background:white;
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+
+}

@@ -1,0 +1,215 @@
+.about{
+
+    padding:120px 10%;
+
+    background:#ffffff;
+
+}
+
+
+
+.about-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+
+
+
+.about-text{
+
+    max-width:600px;
+
+}
+
+
+
+.section-tag{
+
+    color:#b17a25;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.about h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:48px;
+
+    color:#5e1717;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.about-text p:not(.section-tag){
+
+    color:#666;
+
+    line-height:1.8;
+
+    margin-bottom:18px;
+
+}
+
+
+
+.learn-btn{
+
+    margin-top:20px;
+
+    padding:14px 32px;
+
+    border-radius:30px;
+
+    border:none;
+
+    background:#7a1f1f;
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.learn-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 15px 30px rgba(122,31,31,.25);
+
+}
+
+
+
+
+
+.about-card{
+
+
+    width:420px;
+
+    padding:40px;
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:25px;
+
+
+    background:
+
+    rgba(255,255,255,0.7);
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,.08);
+
+
+    backdrop-filter:blur(15px);
+
+}
+
+
+
+.card-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
+    background:#fffaf3;
+
+}
+
+
+
+.card-item h3{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:40px;
+
+    color:#7a1f1f;
+
+}
+
+
+
+.card-item span{
+
+    color:#777;
+
+    font-weight:500;
+
+}
+
+
+
+@media(max-width:900px){
+
+
+.about-container{
+
+    flex-direction:column;
+
+}
+
+
+.about-card{
+
+    width:100%;
+
+}
+
+
+
+.about h2{
+
+    font-size:36px;
+
+}
+
+
+}

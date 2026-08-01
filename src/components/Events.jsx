@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { eventsData } from './data'
+import { eventsData } from '../data'
 
 export default function Events() {
   const [year, setYear] = useState('2026-2027')

@@ -1,46 +1,44 @@
-import { useEffect, useRef } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Loader from './Loader'
-import Navbar from './Navbar'
-import Hero from './Hero'
-import About from './About'
-import Events from './Events'
-import OfficeBearers from './OfficeBearers'
-import Gallery from './Gallery'
-import Footer from './Footer'
 
-export default function App() {
-  const inited = useRef(false)
+import Home from "./pages/Home";
+import Crew from "./pages/Crew";
+import Events from "./pages/Events";
+import Gallery from "./pages/Gallery";
+import Achievements from "./pages/Achievements";
+import Quiz from "./pages/Quiz";
+import Contact from "./pages/Contact";
 
-  useEffect(() => {
-    if (inited.current) return
-    inited.current = true
 
-    if (history.scrollRestoration) {
-      history.scrollRestoration = 'manual'
-    }
-    window.scrollTo(0, 0)
 
-    AOS.init({
-      duration: 600,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 60
-    })
-  }, [])
+export default function App(){
 
-  return (
-    <>
-      <Loader />
-      <Navbar />
-      <Hero />
-      <About />
-      <Events />
-      <OfficeBearers />
-      <Gallery />
-      <Footer />
-    </>
-  )
+return(
+
+<BrowserRouter>
+
+<Routes>
+
+
+<Route path="/" element={<Home/>}/>
+
+<Route path="/crew" element={<Crew/>}/>
+
+<Route path="/events" element={<Events/>}/>
+
+<Route path="/gallery" element={<Gallery/>}/>
+
+<Route path="/achievements" element={<Achievements/>}/>
+
+<Route path="/quiz" element={<Quiz/>}/>
+
+<Route path="/contact" element={<Contact/>}/>
+
+
+</Routes>
+
+</BrowserRouter>
+
+)
+
 }
