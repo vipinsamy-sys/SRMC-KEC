@@ -1,44 +1,82 @@
+import { useState, useEffect } from "react";
 import "../styles/Navbar.css";
 
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Crew", href: "/crew" },
+  { label: "Events", href: "/events" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Achievements", href: "/achievements" },
+  { label: "Quiz", href: "/quiz" },
+  { label: "Contact", href: "/contact" },
+];
+
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const closeOnResize = () => {
+      if (window.innerWidth > 1024) setMenuOpen(false);
+    };
+    window.addEventListener("resize", closeOnResize);
+    return () => window.removeEventListener("resize", closeOnResize);
+  }, []);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  const goToHero = (e) => {
+    closeMenu();
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="navbar">
-
-      <div className="logo">
+      <a className="logo" href="/" onClick={goToHero} aria-label="Go to home">
         <img src="/images/MATHSLOGO.jpg" alt="SRMC Logo" />
-        <div>
+        <div className="logo-text">
           <h2>SRMC</h2>
           <span>KEC Mathematics Club</span>
         </div>
-      </div>
+      </a>
 
-
-      <nav>
+      <nav className="desktop-nav">
         <ul className="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/crew">Crew</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="/gallery">Gallery</a></li>
-          <li><a href="/achievements">Achievements</a></li>
-          <li><a href="/quiz">Quiz</a></li>
-          <li><a href="/contact">Contact</a></li>
+          {navItems.map((item) => (
+            <li key={item.href}><a href={item.href}>{item.label}</a></li>
+          ))}
         </ul>
       </nav>
 
-
       <div className="auth-buttons">
+        <a href="/login" className="login-btn">Log In</a>
+        <a href="/signup" className="signup-btn">Sign Up</a>
+      </div>
 
-    <button className="login-btn">
-        Log In
-    </button>
+      <button
+        className={`menu-toggle ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle navigation menu"
+        aria-expanded={menuOpen}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-
-    <button className="signup-btn">
-        Sign Up
-    </button>
-
-</div>
-
+      <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+        <ul>
+          {navItems.map((item) => (
+            <li key={item.href}><a href={item.href} onClick={closeMenu}>{item.label}</a></li>
+          ))}
+        </ul>
+        <div className="mobile-auth">
+          <a href="/login" className="login-btn" onClick={closeMenu}>Log In</a>
+          <a href="/signup" className="signup-btn" onClick={closeMenu}>Sign Up</a>
+        </div>
+      </div>
     </header>
   );
 }

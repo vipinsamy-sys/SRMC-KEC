@@ -3,7 +3,7 @@ import "../styles/Hero.css";
 export default function Hero() {
   return (
 
-    <section className="hero">
+    <section className="hero" id="hero">
 
       {/* Floating Mathematics Symbols */}
       <div className="math-symbol symbol-one">π</div>

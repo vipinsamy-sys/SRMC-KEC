@@ -9,6 +9,8 @@ import Gallery from "./pages/Gallery";
 import Achievements from "./pages/Achievements";
 import Quiz from "./pages/Quiz";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 
 
@@ -38,6 +40,10 @@ return(
 <Route path="/quiz" element={<Quiz/>}/>
 
 <Route path="/contact" element={<Contact/>}/>
+
+<Route path="/login" element={<Login/>}/>
+
+<Route path="/signup" element={<Signup/>}/>
 
 
 </Routes>
