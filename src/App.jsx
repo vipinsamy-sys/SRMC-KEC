@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
+import Loader from "./components/Loader";
 import Home from "./pages/Home";
 import Crew from "./pages/Crew";
 import Events from "./pages/Events";
@@ -14,6 +15,10 @@ import Contact from "./pages/Contact";
 export default function App(){
 
 return(
+
+<>
+
+<Loader/>
 
 <BrowserRouter>
 
@@ -38,6 +43,8 @@ return(
 </Routes>
 
 </BrowserRouter>
+
+</>
 
 )
 
