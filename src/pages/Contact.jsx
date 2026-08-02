@@ -22,16 +22,10 @@ Have questions or want to be part of our mathematical journey?
 </span>
 
 </div>
-
-
-
-
 <div className="contact-container">
 
 
 <div className="contact-info">
-
-
 <div className="info-card">
 
 <h3>
@@ -44,25 +38,15 @@ Department of Mathematics,
 Science & Humanities Block,
 Kongu Engineering College
 </p>
-
 </div>
-
-
-
 <div className="info-card">
-
 <h3>
 ✉ Email
 </h3>
-
 <p>
 srmc@kongu.edu
 </p>
-
 </div>
-
-
-
 <div className="info-card">
 
 <h3>
