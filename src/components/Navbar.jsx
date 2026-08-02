@@ -51,7 +51,7 @@ export default function Navbar() {
     await logout();
   };
 
-  const initials = user ? user.name.trim().charAt(0).toUpperCase() : "";
+  const initials = user?.name?.trim().charAt(0).toUpperCase() || "U";
 
   return (
     <header className="navbar">

@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     authApi
       .me()
-      .then(setUser)
+      .then((u) => setUser(u && u.id ? u : null))
       .catch(() => setUser(null))
       .finally(() => setLoading(false));
   }, []);

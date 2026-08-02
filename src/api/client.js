@@ -1,4 +1,4 @@
-const BASE = "/api";
+const BASE = import.meta.env.VITE_API_URL || "/api";
 
 export async function api(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
@@ -7,7 +7,9 @@ export async function api(path, options = {}) {
     ...options,
   });
 
-  const data = await res.json().catch(() => ({}));
+  const isJson = (res.headers.get("content-type") || "").includes("application/json");
+  const data = isJson ? await res.json().catch(() => ({})) : {};
+
   if (!res.ok) {
     const detail = typeof data.detail === "string" ? data.detail : "Something went wrong";
     throw new Error(detail);
