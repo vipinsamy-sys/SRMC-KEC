@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { useAuth } from "../context/AuthContext";
 import "../styles/Navbar.css";
 
 const navItems = [
@@ -12,7 +14,9 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const userChipRef = useRef(null);
 
   useEffect(() => {
     const closeOnResize = () => {
@@ -21,6 +25,16 @@ export default function Navbar() {
     window.addEventListener("resize", closeOnResize);
     return () => window.removeEventListener("resize", closeOnResize);
   }, []);
+
+  useEffect(() => {
+    if (user && userChipRef.current) {
+      gsap.fromTo(
+        userChipRef.current,
+        { opacity: 0, y: -10 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      );
+    }
+  }, [user]);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -31,6 +45,13 @@ export default function Navbar() {
       document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const handleLogout = async () => {
+    closeMenu();
+    await logout();
+  };
+
+  const initials = user ? user.name.trim().charAt(0).toUpperCase() : "";
 
   return (
     <header className="navbar">
@@ -51,8 +72,17 @@ export default function Navbar() {
       </nav>
 
       <div className="auth-buttons">
-        <a href="/login" className="login-btn">Log In</a>
-        <a href="/signup" className="signup-btn">Sign Up</a>
+        {user ? (
+          <div className="user-chip" ref={userChipRef}>
+            <div className="user-avatar" title={user.name} aria-label="User icon">{initials}</div>
+            <button type="button" className="logout-btn" onClick={handleLogout}>Logout</button>
+          </div>
+        ) : (
+          <>
+            <a href="/login" className="login-btn">Log In</a>
+            <a href="/signup" className="signup-btn">Sign Up</a>
+          </>
+        )}
       </div>
 
       <button
@@ -73,8 +103,16 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="mobile-auth">
-          <a href="/login" className="login-btn" onClick={closeMenu}>Log In</a>
-          <a href="/signup" className="signup-btn" onClick={closeMenu}>Sign Up</a>
+          {user ? (
+            <button type="button" className="logout-btn" onClick={handleLogout}>
+              {user.name} · Logout
+            </button>
+          ) : (
+            <>
+              <a href="/login" className="login-btn" onClick={closeMenu}>Log In</a>
+              <a href="/signup" className="signup-btn" onClick={closeMenu}>Sign Up</a>
+            </>
+          )}
         </div>
       </div>
     </header>

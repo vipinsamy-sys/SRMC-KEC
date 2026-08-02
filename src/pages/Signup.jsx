@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useAuth } from "../context/AuthContext";
 import "../styles/Auth.css";
 
 function EyeToggle({ show, onClick, label }) {
@@ -26,20 +28,23 @@ function EyeToggle({ show, onClick, label }) {
 }
 
 export default function Signup() {
-  const [form, setForm] = useState({ name: "", email: "", password: "", confirm: "" });
+  const navigate = useNavigate();
+  const { register } = useAuth();
+  const [form, setForm] = useState({ name: "", email: "", mobile: "", password: "", confirm: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    if (!form.name.trim() || !form.email.trim() || !form.password.trim() || !form.confirm.trim()) {
+    if (!form.name.trim() || !form.email.trim() || !form.mobile.trim() || !form.password.trim() || !form.confirm.trim()) {
       setError("Please fill in all fields.");
       return;
     }
@@ -55,10 +60,20 @@ export default function Signup() {
       setError("Passwords do not match.");
       return;
     }
-    setSuccess(true);
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 1200);
+    try {
+      setLoading(true);
+      await register({
+        name: form.name,
+        email: form.email,
+        mobile: form.mobile,
+        password: form.password,
+      });
+      setSuccess(true);
+      setTimeout(() => navigate("/"), 1200);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -98,6 +113,16 @@ export default function Signup() {
             onChange={handleChange}
           />
 
+          <label htmlFor="mobile">Mobile Number</label>
+          <input
+            id="mobile"
+            name="mobile"
+            type="tel"
+            placeholder="Enter your mobile number"
+            value={form.mobile}
+            onChange={handleChange}
+          />
+
           <label htmlFor="password">Password</label>
           <div className="password-wrap">
             <input
@@ -134,7 +159,9 @@ export default function Signup() {
 
           {error && <p className="auth-error">{error}</p>}
 
-          <button type="submit" className="auth-submit">Sign Up</button>
+          <button type="submit" className="auth-submit" disabled={loading}>
+            {loading ? "Creating account..." : "Sign Up"}
+          </button>
         </form>
 
         <p className="auth-switch">

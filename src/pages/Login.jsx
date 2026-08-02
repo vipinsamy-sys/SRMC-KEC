@@ -1,18 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useAuth } from "../context/AuthContext";
 import "../styles/Auth.css";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     if (!form.email.trim() || !form.password.trim()) {
@@ -23,10 +28,15 @@ export default function Login() {
       setError("Please enter a valid email address.");
       return;
     }
-    setSuccess(true);
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 1200);
+    try {
+      setLoading(true);
+      await login({ email: form.email, password: form.password });
+      setSuccess(true);
+      setTimeout(() => navigate("/"), 1200);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -96,7 +106,9 @@ export default function Login() {
 
           {error && <p className="auth-error">{error}</p>}
 
-          <button type="submit" className="auth-submit">Log In</button>
+          <button type="submit" className="auth-submit" disabled={loading}>
+            {loading ? "Logging in..." : "Log In"}
+          </button>
         </form>
 
         <p className="auth-switch">
