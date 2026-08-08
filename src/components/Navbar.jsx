@@ -5,10 +5,8 @@ import "../styles/Navbar.css";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Crew", href: "/crew" },
-  { label: "Events", href: "/events" },
+  { label: "Team", href: "/crew" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Achievements", href: "/achievements" },
   { label: "Quiz", href: "/quiz" },
   { label: "Contact", href: "/contact" },
 ];

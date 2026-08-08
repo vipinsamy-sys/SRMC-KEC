@@ -38,6 +38,8 @@ export const bearers = [
   { name: "Mr. VISHAL M", role: "Second Year", image: "/images/summaa.jpg" }
 ];
 
+
+
 export const eventsData = {
   "2026-2027": [
     { title: "Inaugural Function", date: "September", status: "upcoming" },

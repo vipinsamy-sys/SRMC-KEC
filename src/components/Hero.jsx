@@ -56,16 +56,6 @@ export default function Hero() {
 
       </div>
 
-
-      <div className="scroll-text">
-
-        SCROLL
-
-        <span></span>
-
-      </div>
-
-
     </section>
 
   );

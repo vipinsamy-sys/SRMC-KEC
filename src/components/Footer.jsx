@@ -33,7 +33,6 @@ Explore
 </h3>
 
 <a href="/">Home</a>
-<a href="/events">Events</a>
 <a href="/gallery">Gallery</a>
 <a href="/contact">Contact</a>
 

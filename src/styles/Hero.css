@@ -253,38 +253,6 @@
 
 
 
-.scroll-text{
-
-    position:absolute;
-
-    bottom:35px;
-
-    font-size:12px;
-
-    letter-spacing:4px;
-
-    color:#777;
-
-}
-
-
-
-.scroll-text span{
-
-    display:block;
-
-    width:2px;
-
-    height:45px;
-
-    background:#b17a25;
-
-    margin:15px auto;
-
-}
-
-
-
 @keyframes float{
 
     0%,100%{
