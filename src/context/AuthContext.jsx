@@ -17,12 +17,14 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     const u = await authApi.login(credentials);
+    if (!u?.id) throw new Error("Authentication service unavailable");
     setUser(u);
     return u;
   };
 
   const register = async (payload) => {
     const u = await authApi.register(payload);
+    if (!u?.id) throw new Error("Authentication service unavailable");
     setUser(u);
     return u;
   };
