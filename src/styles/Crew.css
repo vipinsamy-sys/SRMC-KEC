@@ -2,7 +2,7 @@
 
 min-height:100vh;
 
-padding:150px 10% 80px;
+padding:clamp(110px,16vw,150px) clamp(16px,8vw,10%) clamp(60px,10vw,80px);
 
 background:#fffaf3;
 
@@ -14,7 +14,7 @@ background:#fffaf3;
 
 text-align:center;
 
-margin-bottom:70px;
+margin-bottom:clamp(44px,6vw,70px);
 
 }
 
@@ -38,7 +38,7 @@ font-weight:600;
 
 font-family:"Playfair Display",serif;
 
-font-size:60px;
+font-size:clamp(38px,8vw,60px);
 
 color:#5e1717;
 
@@ -62,7 +62,7 @@ display:grid;
 
 grid-template-columns:repeat(4,1fr);
 
-gap:30px;
+gap:clamp(20px,3vw,30px);
 
 }
 
@@ -72,7 +72,7 @@ gap:30px;
 
 background:white;
 
-padding:40px 25px;
+padding:clamp(28px,4vw,40px) clamp(20px,3vw,25px);
 
 border-radius:25px;
 
@@ -98,9 +98,9 @@ transform:translateY(-12px);
 
 .member-avatar{
 
-width:90px;
+width:clamp(72px,10vw,90px);
 
-height:90px;
+height:clamp(72px,10vw,90px);
 
 margin:auto;
 
@@ -162,6 +162,35 @@ grid-template-columns:1fr;
 .crew-header h1{
 
 font-size:40px;
+
+}
+
+}
+
+/* 2 columns on tablets, 1 column on phones */
+@media (max-width:1024px){
+
+.crew-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:22px;
+
+}
+
+}
+
+@media (max-width:560px){
+
+.crew-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.member-card h2{
+
+font-size:20px;
 
 }
 

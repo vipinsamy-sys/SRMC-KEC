@@ -257,6 +257,8 @@
     visibility:hidden;
     transform:translateY(-10px);
     transition:opacity .3s ease, transform .3s ease, visibility .3s;
+    max-height:calc(100vh - 110px);
+    overflow-y:auto;
     z-index:1000;
 }
 
@@ -336,6 +338,21 @@
 
     .mobile-menu{
         padding:1rem;
+    }
+}
+
+@media (max-width:380px){
+    .logo span{
+        display:none;
+    }
+
+    .logo h2{
+        font-size:17px;
+    }
+
+    .menu-toggle{
+        width:40px;
+        height:40px;
     }
 }
 

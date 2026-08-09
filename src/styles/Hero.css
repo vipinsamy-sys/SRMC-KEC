@@ -73,7 +73,7 @@
 
     font-family:"Playfair Display",serif;
 
-    font-size:70px;
+    font-size:clamp(36px,9vw,70px);
 
     line-height:1.15;
 
@@ -95,7 +95,7 @@
 
     margin-top:25px;
 
-    font-size:20px;
+    font-size:clamp(16px,3.5vw,20px);
 
     font-weight:500;
 
@@ -203,7 +203,7 @@
 
     font-family:"Playfair Display",serif;
 
-    font-size:100px;
+    font-size:clamp(64px,14vw,100px);
 
     color:rgba(150,100,40,0.08);
 
@@ -310,5 +310,73 @@
 
 }
 
+
+}
+
+
+/* ── RESPONSIVE (tablet & mobile) ── */
+@media (max-width:768px){
+
+    .hero-content{
+        max-width:100%;
+        padding:70px 18px 60px;
+    }
+
+    .hero-badge{
+        font-size:11px;
+        padding:8px 14px;
+        letter-spacing:.5px;
+        margin-bottom:22px;
+    }
+
+    .hero-description{
+        font-size:15px;
+        margin-top:18px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+        max-width:300px;
+        margin:28px auto 0;
+        gap:14px;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+        width:100%;
+        padding:13px 20px;
+    }
+
+    .math-symbol{
+        font-size:60px;
+        animation:none;
+    }
+
+}
+
+@media (max-width:520px){
+
+    .hero{
+        min-height:auto;
+        padding:30px 0 60px;
+    }
+
+    .hero h1{
+        font-size:clamp(30px,10vw,38px);
+    }
+
+    .symbol-four{
+        display:none;
+    }
+
+}
+
+@media (max-width:380px){
+
+    .hero-badge{
+        font-size:10px;
+        letter-spacing:0;
+    }
 
 }

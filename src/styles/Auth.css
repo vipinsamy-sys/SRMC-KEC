@@ -2,7 +2,7 @@
 
 min-height:100vh;
 
-padding:150px 10% 80px;
+padding:clamp(110px,16vw,150px) 10% 80px;
 
 background:#fffaf3;
 
@@ -54,7 +54,7 @@ max-width:440px;
 
 background:white;
 
-padding:45px 40px;
+padding:clamp(34px,5vw,45px) clamp(24px,6vw,40px);
 
 border-radius:30px;
 
@@ -473,5 +473,47 @@ font-size:28px;
 .auth-symbol-three{font-size:50px;}
 
 .auth-symbol-four{font-size:55px;}
+
+}
+
+@media (max-width:400px){
+
+.auth-page{
+
+padding:110px 5% 50px;
+
+}
+
+.auth-card{
+
+padding:30px 20px;
+
+border-radius:24px;
+
+}
+
+.auth-card h1{
+
+font-size:26px;
+
+}
+
+.auth-row{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:12px;
+
+}
+
+.auth-logo{
+
+width:64px;
+
+height:64px;
+
+}
 
 }
